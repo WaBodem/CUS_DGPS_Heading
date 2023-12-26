@@ -1,0 +1,15 @@
+[Unit]
+Description=CS GPS 2
+After=network.target
+Wants=mosquitto.service
+
+[Service]
+WorkingDirectory=/home/pi/Arbeit/Thingstream
+ExecStart=sudo python3 ./ppclient-06.py -P /dev/ttyACM0 -i CS1_2 --region eu --echo -m TestWB3
+Restart=always
+RestartSec=10
+StandardOutput=syslog
+StandardError=syslog
+
+[Install]
+WantedBy=multi-user.target
